@@ -5,14 +5,10 @@ using System.Collections;
 
 namespace Night_Vision_Update
 {
-
-    
     [HarmonyPatch(typeof(Player), nameof(Player.LateUpdate))]
     internal class Player_Update_Patcher
     {
         [HarmonyPostfix]
-        
-
         public static void ToggleNightVision()
         {
             if (Player.main == null)
@@ -23,7 +19,7 @@ namespace Night_Vision_Update
                 NightVisionChipMain.ambientLight = RenderSettings.ambientLight;
             }
 
-            if (Inventory.main.equipment.GetCount(NightVisionChip.TechTypeID) <= 0)
+            if (Inventory.main.equipment.GetCount(NightVisionChip.Info.TechType) <= 0)
             {
 
                 RenderSettings.ambientIntensity = NightVisionChipMain.ambientIntensity;
@@ -31,7 +27,7 @@ namespace Night_Vision_Update
             }
             else
             {
-                if (NightVisionChipConfig.nightVisionEnabled)
+                if (NightVisionChipMain.nightVisionEnabled)
                 {
                     RenderSettings.ambientIntensity = 100f;
                     RenderSettings.ambientLight = Color.green;

@@ -44,8 +44,8 @@
     <Reference Include="BepInEx">
       <HintPath>B:\SteamLibrary\steamapps\common\Subnautica\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>
-    <Reference Include="SMLHelper">
-      <HintPath>B:\SteamLibrary\steamapps\common\Subnautica\Mods\Modding Helper\SMLHelper.dll</HintPath>
+    <Reference Include="Nautilus">
+      <HintPath>B:\SteamLibrary\steamapps\common\Subnautica\Nautilusmods\Nautilus\Nautilus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -69,9 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NightVisionChipConfig.cs" />
     <Compile Include="Player_Update_Patcher.cs" />
-    <Compile Include="NightConfig.cs" />
     <Compile Include="NightVisionChip.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -79,6 +77,8 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>mkdir "B:\SteamLibrary\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)"
-copy /Y "$(TargetPath)" "B:\SteamLibrary\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)"</PostBuildEvent>
+copy /Y "$(TargetPath)" "B:\SteamLibrary\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)"
+IF EXIST "B:\SteamLibrary\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)\$(TargetName).zip" ( del "B:\SteamLibrary\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)\$(TargetName).zip")
+"C:\Program Files\7-Zip\7z.exe" a "B:\SteamLibrary\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)\$(TargetName).zip" "B:\SteamLibrary\steamapps\common\Subnautica\BepInEx\plugins\$(TargetName)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

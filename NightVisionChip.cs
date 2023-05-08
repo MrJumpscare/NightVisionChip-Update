@@ -1,71 +1,42 @@
 ﻿using System;
 using System.Collections;
-using SMLHelper.V2.Assets;
-using SMLHelper.V2.Crafting;
-using SMLHelper.V2.Handlers;
+using Nautilus.Crafting;
+using Nautilus.Handlers;
 using UnityEngine;
 using HarmonyLib;
-using SMLHelper.V2.Utility;
+using Nautilus.Utility;
+using Nautilus.Assets;
+using Nautilus.Assets.PrefabTemplates;
+using Nautilus.Assets.Gadgets;
+using static CraftData;
 
 namespace Night_Vision_Update
 {
-    internal class NightVisionChip : Craftable
+    public class NightVisionChip
     {
-     
-        internal static TechType TechTypeID { get; private set; }
-
-        public NightVisionChip() : base("NightVisionChip", "Night Vision HUD", "Adds night vision capabilities to your scuba HUD.")
+        public static PrefabInfo Info { get; private set; } = PrefabInfo
+            .WithTechType("NightVisionChip", "Night Vision HUD", "Adds night vision capabilities to your scuba HUD.")
+            .WithIcon(ImageUtils.LoadSpriteFromFile(NightVisionChipMain.AssetsFolder + "/NightVisionChip.png"));
+        public static void Register()
         {
-            this.OnFinishedPatching = (Spawnable.PatchEvent)Delegate.Combine(this.OnFinishedPatching, new Spawnable.PatchEvent(this.AdditionalPatching));
-        }
+            var customPrefab = new CustomPrefab(Info); 
 
-        public override CraftTree.Type FabricatorType { get; } = CraftTree.Type.Fabricator;
-
-        public override TechGroup GroupForPDA { get; } = TechGroup.Personal;
-
-        public override TechCategory CategoryForPDA { get; } = TechCategory.Equipment;
-
-        public override string AssetsFolder { get; } = NightVisionChipMain.AssetsFolder;
-
-        public override string[] StepsToFabricatorTab { get; } = new string[]
-        {
-            "Personal",
-            "Equipment"
-        };
-        public override IEnumerator GetGameObjectAsync(IOut<GameObject> gameObject)
-        {
-            CoroutineTask<GameObject> task = CraftData.GetPrefabForTechTypeAsync(TechType.Compass, true);
-            yield return task;
-            GameObject originalPrefab = task.GetResult();
-            GameObject resultPrefab = UnityEngine.Object.Instantiate<GameObject>(originalPrefab);
-            gameObject.Set(resultPrefab);
-            yield break;
-        }
-
-        protected override TechData GetBlueprintRecipe()
-        {
-            return new TechData
-            {
-                craftAmount = 1,
+            var NightChipObj = new CloneTemplate(Info, TechType.Compass);
+            customPrefab.SetGameObject(NightChipObj);
+            customPrefab.SetRecipe(new RecipeData() 
+            { 
+                craftAmount = 1, 
                 Ingredients =
                 {
-                    new Ingredient(TechType.AdvancedWiringKit, 1),
-                    new Ingredient(TechType.Magnetite, 1)
+                     new Ingredient(TechType.AdvancedWiringKit, 1),
+                     new Ingredient(TechType.Magnetite, 1)
                 }
-            };
-        }
-
-        private void AdditionalPatching()
-        {
-            NightVisionChip.TechTypeID = base.TechType;
-            CraftDataHandler.SetEquipmentType(base.TechType, EquipmentType.Chip);
-        }
-
-        private static readonly NightVisionChip main = new NightVisionChip();
-
-        protected override Atlas.Sprite GetItemSprite()
-        {
-            return ImageUtils.LoadSpriteFromFile(AssetsFolder + "/NightVisionChip.png");
+            })
+                .WithFabricatorType(CraftTree.Type.Fabricator)
+                .WithStepsToFabricatorTab("Personal", "Equipment");
+            customPrefab.SetEquipment(EquipmentType.Chip);
+            customPrefab.SetPdaGroupCategory(TechGroup.Personal, TechCategory.Equipment);
+            customPrefab.Register();
         }
     }
 }

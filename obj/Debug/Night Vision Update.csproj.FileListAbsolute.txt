@@ -4,7 +4,6 @@ C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\0H
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\Assembly-CSharp-firstpass_publicized.dll
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\Assembly-CSharp_publicized.dll
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\BepInEx.dll
-C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\SMLHelper.dll
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\UnityEngine.CoreModule.dll
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\UnityEngine.dll
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\UnityEngine.InputLegacyModule.dll
@@ -65,7 +64,6 @@ C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\Un
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\UnityEngine.InputModule.dll
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\0Harmony.xml
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\BepInEx.xml
-C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\SMLHelper.xml
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\MonoMod.Utils.xml
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\MonoMod.RuntimeDetour.xml
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\obj\Debug\Night Vision Update.csproj.AssemblyReference.cache
@@ -73,3 +71,5 @@ C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\obj\Debug\Ni
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\obj\Debug\Night Vision Update.csproj.CopyComplete
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\obj\Debug\Night Vision Update.dll
 C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\obj\Debug\Night Vision Update.pdb
+C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\Nautilus.dll
+C:\Users\chris\source\repos\Night Vision Update\Night Vision Update\bin\Debug\Nautilus.xml
